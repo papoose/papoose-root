@@ -1,0 +1,259 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.papoose</groupId>
+    <artifactId>papoose-root</artifactId>
+    <name>Papoose</name>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <description>Papoose parent</description>
+    <url>http://osgi.sourceforge.net</url>
+
+
+    <issueManagement>
+        <system>sourceforge</system>
+        <url>http://sourceforge.net/tracker/?group_id=182181</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>continuum</system>
+        <notifiers>
+            <notifier>
+                <type>mail</type>
+                <sendOnError />
+                <sendOnFailure />
+                <address>osgi-developer@lists.sourceforge.net</address>
+            </notifier>
+        </notifiers>
+    </ciManagement>
+
+    <repositories>
+
+        <repository>
+            <id>papoose-dist-m2</id>
+            <name>Papoose Repository</name>
+            <url>http://osgi.sourceforge.net/dist-m2</url>
+        </repository>
+
+        <repository>
+            <id>papoose-dist-m2-snapshot</id>
+            <name>Papoose SNAPSHOT Repository</name>
+            <url>http://osgi.sourceforge.net/dist-m2-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+
+        <repository>
+            <id>paoose-dist-m1</id>
+            <name>Papoose M1 Repository</name>
+            <url>http://osgi.sourceforge.net/dist-m1</url>
+            <layout>legacy</layout>
+            <snapshots>
+                <enabled>true</enabled>
+                <checksumPolicy>ignore</checksumPolicy>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>apache-dist-m2-snapshot</id>
+            <name>Apache Softwre Foundation Snapshot Repository</name>
+            <url>http://people.apache.org/repo/m2-snapshot-repository</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+
+        <repository>
+            <id>codehaus</id>
+            <name>CodeHaus Repository</name>
+            <url>http://repository.codehaus.org</url>
+        </repository>
+
+        <repository>
+            <id>codehaus.snapshots</id>
+            <name>CodeHaus Snapshots Repository</name>
+            <url>http://snapshots.repository.codehaus.org</url>
+        </repository>
+
+        <repository>
+            <id>maven2-repository.dev.java.net</id>
+            <name>Java.net Maven 2 Repository</name>
+            <url>https://maven2-repository.dev.java.net/nonav/repository</url>
+        </repository>
+
+        <repository>
+            <id>maven-repository.dev.java.net</id>
+            <name>Java.net Maven 1 Repository (legacy)</name>
+            <url>https://maven-repository.dev.java.net/nonav/repository</url>
+            <layout>legacy</layout>
+        </repository>
+
+    </repositories>
+
+    <pluginRepositories>
+
+        <pluginRepository>
+            <id>papoose-dist-m2</id>
+            <name>Papoose Repository</name>
+            <url>http://osgi.sourceforge.net/dist-m2</url>
+        </pluginRepository>
+
+        <pluginRepository>
+            <id>pappose-dist-m2-snapshot</id>
+            <name>Papoose SNAPSHOT Repository</name>
+            <url>http://osgi.sourceforge.net/dist-m2-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </pluginRepository>
+
+        <pluginRepository>
+            <id>maven2-repository.dev.java.net</id>
+            <url>https://maven2-repository.dev.java.net/nonav/repository</url>
+        </pluginRepository>
+
+        <pluginRepository>
+            <id>maven-repository.dev.java.net</id>
+            <name>Java.net Maven 1 Repository (legacy)</name>
+            <url>https://maven-repository.dev.java.net/nonav/repository</url>
+            <layout>legacy</layout>
+        </pluginRepository>
+
+    </pluginRepositories>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-webdav</artifactId>
+                <version>1.0-beta-2</version>
+            </extension>
+        </extensions>
+
+        <pluginManagement>
+            <plugins>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.5</source>
+                        <target>1.5</target>
+                        <showDeprecation>true</showDeprecation>
+                        <showWarnings>true</showWarnings>
+                        <compilerArgument>-Xlint:all,-serial,-unchecked</compilerArgument>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <configuration>
+                        <archive>
+                            <manifestEntries>
+                                <Papoose-UserDir>${user.dir}</Papoose-UserDir>
+                                <Papoose-GroupId>${project.groupId}</Papoose-GroupId>
+                                <Papoose-ArtifactId>${project.artifactId}</Papoose-ArtifactId>
+                                <Papoose-Version>${project.version}</Papoose-Version>
+                                <Papoose-Packaging>${project.packaging}</Papoose-Packaging>
+                            </manifestEntries>
+                        </archive>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.0.1</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.maven</groupId>
+                            <artifactId>maven-archiver</artifactId>
+                            <!--
+                                FIXME: 2.1 is broken... won't allow custom manifestEntires, need to use
+                                this snap until new maven war plugin is released.
+                            -->
+                            <version>2.2</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <archive>
+                            <manifestEntries>
+                                <Papoose-UserDir>${user.dir}</Papoose-UserDir>
+                                <Papoose-GroupId>${project.groupId}</Papoose-GroupId>
+                                <Papoose-ArtifactId>${project.artifactId}</Papoose-ArtifactId>
+                                <Papoose-Version>${project.version}</Papoose-Version>
+                                <Papoose-Packaging>${project.packaging}</Papoose-Packaging>
+                            </manifestEntries>
+                        </archive>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.papoose.plugins</groupId>
+                <artifactId>version-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>validate-java-version</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>require-java-version</goal>
+                        </goals>
+                        <configuration>
+                            <version>1.5+</version>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <dependencies>
+
+        <!-- =============================== -->
+        <!-- Testing dependencies -->
+        <!-- =============================== -->
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <distributionManagement>
+
+        <repository>
+            <id>papoose-dist-m2</id>
+            <name>Pappose Central Repository</name>
+            <url>scpexe://shell.sourceforge.net/home/groups/o/os/osgi/htdocs/dist-m2</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>papoose-dist-m2-snapshot</id>
+            <name>Papoose Central Development Repository</name>
+            <url>scpexe://shell.sourceforge.net/home/groups/o/os/osgi/htdocs/dist-m2-snapshot</url>
+        </snapshotRepository>
+
+    </distributionManagement>
+
+</project>
