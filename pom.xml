@@ -5,7 +5,7 @@
     <groupId>org.papoose</groupId>
     <artifactId>papoose-root</artifactId>
     <name>Papoose</name>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2.0</version>
     <packaging>pom</packaging>
     <description>Papoose parent</description>
     <url>http://osgi.sourceforge.net</url>
