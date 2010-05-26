@@ -10,6 +10,12 @@
     <description>Papoose parent</description>
     <url>http://osgi.sourceforge.net</url>
 
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+        </license>
+    </licenses>
 
     <issueManagement>
         <system>papoose-r4</system>
@@ -165,6 +171,11 @@
 
     </distributionManagement>
 
+    <scm>
+        <connection>scm:git:git://github.com/maguro/papoose-root.git</connection>
+        <url>scm:git:git://github.com/maguro/papoose-root.git</url>
+    </scm>
+
     <profiles>
 
         <profile>
@@ -219,4 +230,5 @@
         </profile>
 
     </profiles>
+
 </project>
