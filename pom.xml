@@ -17,6 +17,16 @@
         </license>
     </licenses>
 
+    <developers>
+        <developer>
+            <id>maguro</id>
+            <name>Alan D. Cabrera</name>
+            <email>adc@toolazydogs.com</email>
+            <url>http://www.toolazydogs.com</url>
+            <timezone>-8</timezone>
+        </developer>
+    </developers>
+
     <issueManagement>
         <system>papoose-r4</system>
         <url>http://www.papoose-r4.org/support</url>
@@ -160,13 +170,13 @@
         <repository>
             <id>papoose-dist-m2</id>
             <name>Papoose Release Repository</name>
-            <url>http://oss.sonatype.org/content/repositories/papoose-releases</url>
+            <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
 
         <snapshotRepository>
             <id>papoose-dist-m2-snapshots</id>
             <name>Papoose Development Repository</name>
-            <url>http://oss.sonatype.org/content/repositories/papoose-snapshots</url>
+            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
 
     </distributionManagement>
